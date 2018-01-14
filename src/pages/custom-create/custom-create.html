@@ -1,0 +1,80 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>New Event</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="eventForm" (submit)="loginUser()" novalidate>
+    <ion-item>
+      <ion-label stacked>Custom Name</ion-label>
+      <ion-input formControlName="customName" [(ngModel)]="customName" type="text" placeholder="What's your custom's name?">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Event Date</ion-label>
+      <ion-datetime formControlName="customDate" [(ngModel)]="customDate" displayFormat="D MMM, YY" pickerFormat="DD MMM YYYY" min="2017" max="2050">
+      </ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Venue</ion-label>
+      <ion-input formControlName="customVenue" [(ngModel)]="customVenue" type="text" placeholder="Venue">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>City</ion-label>
+      <ion-input formControlName="customCity" [(ngModel)]="customCity" type="text" placeholder="City">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Description</ion-label>
+      <ion-textarea formControlName="customDescription" [(ngModel)]="customDescription" type="text" placeholder="Description">
+      </ion-textarea>
+    </ion-item>
+
+    <ion-item>
+        <ion-label>Game</ion-label>
+        <ion-select formControlName="customGame" [(ngModel)]="customGame">
+          <ion-option value="magic">Magic</ion-option>
+          <ion-option value="yu-gi-oh">Yu-gi-Oh</ion-option>
+          <ion-option value="pokemon">Pokemon</ion-option>
+          <ion-option value="other">Other</ion-option>
+        </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>SubCategory</ion-label>
+      <ion-select formControlName="customSubcategory" [(ngModel)]="customSubcategory">
+          <ion-option value="casual">Casual</ion-option>
+          <ion-option value="competitive">Competitive</ion-option>
+        </ion-select>
+    </ion-item>
+
+    <ion-item>
+        <ion-label stacked>Seats</ion-label>
+        <ion-input formControlName="customSeats" [(ngModel)]="customSeats" type="number" placeholder="Seats">
+        </ion-input>
+    </ion-item>
+  </form>
+
+
+  <button ion-button block (click)="createCustom(
+    customName, 
+    customDate, 
+    customGame,
+    customVenue,
+    customCity,
+    customDescription,
+    customSubcategory,
+    customSeats,
+    create,
+    this.userEmail
+    )
+    "  [disabled]="!eventForm.valid">
+    Create Event
+  </button>
+</ion-content>

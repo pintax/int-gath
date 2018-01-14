@@ -1,0 +1,113 @@
+<ion-header>
+  <ion-navbar color="primary">
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content padding>
+  <section class = "EventBlock">
+    <ion-list>
+          <ion-item (click)="updateCustomName()">
+            <ion-grid>
+              <ion-row>
+                <ion-col col-6>
+                  Name
+                </ion-col>
+                <ion-col col-6 *ngIf="currentEvent?.name">
+                  {{currentEvent?.name}}
+                </ion-col>
+                <ion-col *ngIf="!currentEvent?.name">
+                  <span>
+                    Tap here to edit.
+                  </span>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+
+          <ion-item (click)="updateCustomCity()">
+            <ion-grid>
+              <ion-row>
+                <ion-col col-6>
+                  City
+                </ion-col>
+                <ion-col col-6 *ngIf="currentEvent?.city">
+                  {{currentEvent?.city}}
+                </ion-col>
+                <ion-col *ngIf="!currentEvent?.city">
+                  <span>
+                    Tap here to edit.
+                  </span>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+
+          <ion-item (click)="updateCustomVenue()">
+            <ion-grid>
+              <ion-row>
+                <ion-col col-6>
+                  Address
+                </ion-col>
+                <ion-col col-6 *ngIf="currentEvent?.venue">
+                  {{currentEvent?.venue}}
+                </ion-col>
+                <ion-col *ngIf="!currentEvent?.venue">
+                  <span>
+                    Tap here to edit.
+                  </span>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Event Date</ion-label>
+            <ion-datetime [(ngModel)]="date" 
+                          displayFormat="D MMM, YY" 
+                          pickerFormat="DD MMM YYYY" 
+                          min="2017" max="2050"
+                          (ionChange)="updateCustomDate(date)">
+            </ion-datetime>
+          </ion-item>
+
+          <ion-item (click)="updateCustomDescription()">
+            <ion-grid>
+              <ion-row>
+                <ion-col col-6>
+                  Description
+                </ion-col>
+                <ion-col col-6 *ngIf="currentEvent?.description">
+                  {{currentEvent?.description}}
+                </ion-col>
+                <ion-col *ngIf="!currentEvent?.description">
+                  <span>
+                    Tap here to edit.
+                  </span>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+
+          <ion-item (click)="updateCustomSeats()">
+            <ion-grid>
+              <ion-row>
+                <ion-col col-6>
+                  seats
+                </ion-col>
+                <ion-col col-6 *ngIf="currentEvent?.seats">
+                  {{currentEvent?.seats}}
+                </ion-col>
+                <ion-col *ngIf="!currentEvent?.seats">
+                  <span>
+                    Tap here to edit.
+                  </span>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+
+        </ion-list>
+  </section>
+</ion-content>

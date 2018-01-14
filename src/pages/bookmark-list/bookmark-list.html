@@ -1,0 +1,21 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>Bookmark</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <ion-list>
+      <ion-item *ngFor="let event of bookList" (click)="goToBookmarkDetail(event.id)">
+        <h2>{{event?.name}}</h2>
+        <p>Record at : <strong>{{event?.createAt}}</strong></p>
+        <p>Venue : <strong>{{event?.venue}}</strong></p>
+        <p>City : <strong>{{event?.city}}</strong></p>
+        <p>Status : <strong>{{event?.status}}</strong></p>
+        <p>Game : <strong>{{event?.game}}</strong></p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  
+  
+  

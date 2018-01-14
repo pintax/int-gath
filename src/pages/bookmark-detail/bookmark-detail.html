@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+      <ion-item>
+        <ion-avatar item-start>
+            <img src="{{logoGame}}">
+        </ion-avatar>
+      {{currentEvent?.name}}
+      <p>record At: <strong>{{currentEvent?.date}}</strong></p>
+      <p>Status: <strong>{{currentEvent?.status}}</strong></p>
+    </ion-item>
+    </ion-list>
+
+
+  <ion-card *ngIf="this.currentEvent.status != 'Recorded'">    
+    <ion-card-content>
+      <button ion-button color="primary" 
+      block (click)="addEventConfirm(
+        this.currentUser.email, 
+        this.currentUser.id);
+      addUserConfirm();
+      deleteEventBookmark();">
+        Confirm event
+      </button>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

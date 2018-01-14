@@ -1,0 +1,13 @@
+{
+    "marker": 
+    {
+        "eventID1": [{
+            "latmarker": "46.612614",
+            "lngmarker": "-0.413537"
+        }],
+        "eventID2": [{
+            "latmarker": "46.612498",
+            "lngmarker": "-0.413390"
+        }]
+    }
+}

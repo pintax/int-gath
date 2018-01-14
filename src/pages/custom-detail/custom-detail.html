@@ -1,0 +1,101 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{currentEvent?.name}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+      <ion-item>
+        <ion-avatar item-start>
+            <img src="{{logoGame}}">
+        </ion-avatar>
+      <p><strong>{{currentEvent?.date}}</strong></p>
+      <p>Address : <strong>{{currentEvent?.venue}}</strong></p>
+    </ion-item>
+    </ion-list>
+
+    <div #map id="map" style="height:50%;"></div>
+
+    <ion-item>
+      <p><strong>{{currentEvent?.description}}</strong></p>
+    </ion-item>
+
+  <ion-card class="add-guest-form">
+    <ion-card-content>
+          {{currentUser?.email}}
+          {{currentEvent?.createBy}}
+
+<!-- Partie Organisateur    -->
+
+        <button *ngIf = "this.currentUser.email == this.currentEvent.createBy &&
+                        this.currentEvent.confirmation != this.eventConfirmed"
+                ion-button color="primary" 
+                block (click)="confirmCustomEvent(this.currentEvent.id);">
+          Confirm my event
+        </button>
+
+        <button *ngIf = "this.currentUser.email == this.currentEvent.createBy"
+                ion-button color="primary"
+                block (click)="goToCustomModify(this.currentEvent.id);">
+          Modify my event
+        </button>
+
+        <button *ngIf = "this.currentUser.email == this.currentEvent.createBy &&
+                        this.currentEvent.confirmation == this.eventConfirmed"
+                ion-button color="primary" 
+                block (click)=  "cancelConfirmationCustomEvent(this.currentEvent.id);">
+          Cancel my Confirmation
+        </button>
+
+        <button *ngIf = "this.currentUser.email == this.currentEvent.createBy"
+                ion-button color="primary" 
+                block (click)=  "goToCustomListPage();
+                                cancelCustomEvent(this.currentUser.id);">
+          Cancel my event
+        </button>
+
+<!-- Partie Utilisateur -->
+
+        <button *ngIf = "this.currentUser.email != this.currentEvent.createBy &&
+                        this.currentCustomBookmark.email == undefined && 
+                        this.currentCustomRecord.email == undefined" 
+                ion-button color="primary" 
+                block (click)="addEventBookmark(
+                                  this.userEmail,
+                                  this.currentUser.id
+                                  );        
+                                  addUserBookmark();">
+          Add to my bookmark
+        </button>
+
+        <button *ngIf = "this.currentUser.email != this.currentEvent.createBy &&
+                        this.currentCustomRecord.email == undefined" 
+                ion-button color="primary" 
+                block (click)="addEventRecord(
+                                  this.currentUser.email, 
+                                  this.currentUser.id
+                                  );
+                                  addUserRecord();
+                                  deleteEventBookmark();">
+          Register for this event
+        </button>
+
+        <button  *ngIf = "this.currentCustomRecord.email == this.currentUser.email"
+              ion-button color="primary" 
+              block (click)="cancelEventRecord(
+                                this.userEmail, 
+                                this.currentUser.id
+                                );
+                                cancelUserBookRecord();">
+          Cancel my registration for this event
+        </button>
+      </ion-card-content>
+    </ion-card>
+
+  <ion-item>
+    <p><strong>{{currentEvent?.seats}}</strong></p>
+    <p><strong>{{currentEvent?.availableSeats}}</strong></p>
+  </ion-item>
+
+</ion-content>

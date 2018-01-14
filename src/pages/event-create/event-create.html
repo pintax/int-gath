@@ -1,0 +1,75 @@
+<!--ion-header>
+  <ion-navbar>
+    <ion-title>New Event</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label stacked>Event Name</ion-label>
+    <ion-input [(ngModel)]="eventName" type="text" placeholder="What's your event's name?">
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Event Date</ion-label>
+    <ion-datetime displayFormat="D MMM, YY" pickerFormat="DD MMM YYYY" min="2017" max="2050" [(ngModel)]="eventDate">
+    </ion-datetime>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Game</ion-label>
+    <ion-select [(ngModel)]="eventGame">
+      <ion-option value="magic">Magic</ion-option>
+      <ion-option value="yu-gi-oh">Yu-gi-Oh</ion-option>
+      <ion-option value="pokemon">Pokemon</ion-option>
+      <ion-option value="other">Other</ion-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Venue</ion-label>
+    <ion-input [(ngModel)]="eventVenue" type="text" placeholder="Venue">
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>City</ion-label>
+    <ion-input [(ngModel)]="eventCity" type="text" placeholder="City">
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>Description</ion-label>
+    <ion-input [(ngModel)]="eventDescription" type="text" placeholder="Description">
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label stacked>SubCategory</ion-label>
+    <ion-input [(ngModel)]="eventSubcategory" type="text" placeholder="sub category">
+    </ion-input>
+  </ion-item>
+
+  <ion-item>
+      <ion-label stacked>Seats</ion-label>
+      <ion-input [(ngModel)]="eventSeats" type="number" placeholder="Seats">
+      </ion-input>
+    </ion-item>
+
+  <button ion-button block (click)="createEvent(
+    eventName, 
+    eventDate, 
+    eventGame,
+    eventVenue,
+    eventCity,
+    eventDescription,
+    eventSubcategory,
+    eventSeats,
+    create,
+    this.userEmail
+    )
+    ">
+    Create Event
+  </button>
+</ion-content>

@@ -1,0 +1,43 @@
+<!--ion-header>
+  <ion-navbar>
+    <ion-title></ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+      <ion-item>
+        <ion-avatar item-start>
+            <img src="{{logoGame}}">
+        </ion-avatar>
+      {{currentEvent?.name}}
+      <p>record At: <strong>{{currentEvent?.date}}</strong></p>
+    </ion-item>
+    </ion-list>
+
+
+  <ion-card class="add-guest-form">
+    <ion-card-content>
+
+      <button ion-button color="primary" 
+      block (click)="addEventBookmark(
+        this.userEmail,
+        this.currentUser.id
+        );
+        
+        addUserBookmark();">
+        Add to my bookmark
+      </button>
+
+      <button *ngIf = "this.currentGuestConfirm.email == null" ion-button color="primary" 
+      block (click)="addEventConfirm(
+        this.userEmail, 
+        this.currentUser.id);
+
+      addUserConfirm();">
+        Confirm event
+      </button>
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
